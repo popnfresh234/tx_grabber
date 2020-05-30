@@ -2,9 +2,7 @@ const fetch = require( 'node-fetch' );
 require( 'dotenv' ).config();
 const DateMaker = require( './date_maker' );
 
-const testStart = '2020-05-29T00%3A00%3A00-08%3A00';
-const testend = '2020-05-29T23%3A59%3A59-08%3A00';
-const { startTime, endTime } = DateMaker.getWeekRangeNWeeksAgo( 1 );
+const { startTime, endTime } = DateMaker.getDayRangeNDaysAgo( 0 );
 const baseUrl = `https://connect.squareup.com/v1/4X68FD52ZJ44J/payments?begin_time=${startTime}&end_time=${endTime}&limit=200`;
 
 const getTxs = ( url, txs ) => fetch( url, {
