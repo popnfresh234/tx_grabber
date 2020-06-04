@@ -5,6 +5,7 @@ const DateMaker = require( './date_maker' );
 const { startTime, endTime } = DateMaker.getDayRangeNDaysAgo( 0 );
 const baseUrl = `https://connect.squareup.com/v1/4X68FD52ZJ44J/payments?begin_time=${startTime}&end_time=${endTime}&limit=200`;
 
+
 const getTxs = ( url, txs ) => fetch( url, {
   method: 'GET',
   headers: {
@@ -30,5 +31,7 @@ const getTxTotals = txs => txs.reduce( ( prev, curr ) => prev + curr.gross_sales
 
 getTxs( baseUrl, [] ).then( ( txs ) => {
   console.log( getTxTotals( txs ) / 100 );
+} ).catch( ( err ) => {
+  console.log( err );
 } );
 
